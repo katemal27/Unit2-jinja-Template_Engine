@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Class Roster - Advanced Programming</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='roster.css')}}">
+</head>
+<body>
+    <div class="container">
+        Class-Roster - Advanced Programing
+        <div class="stats">
+            <strong>Total Students:</strong>{{students|length}}
+
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Birthday</th>
+                    <th>Grade</th>
+                    <th>Gender</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for students in student %}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{student.First}}</td>
+                    <td>{{student.Email}}</td>
+                    <td>{{student.Birthday}}</td>
+                    <td>{{student.Grade}}</td>
+                    <td>{{student.Gender}}</td>
+                </tr>
+                
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
