@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{{student.FIrst}} {{student.Last}}{% endblock title %}
+
+{% block content %}
+<h1>Studnet Profie</h1>
+<div class="stat-card">
+    <h2>{{student.First}}|title {{student.Last}}|title</h2>
+    <div style = 'margin: 20px 0'></div>
+    <p><strong>Email: </strong> {{student.Email}}|lower</p>
+    <p><strong>Birthday: </strong> {{student.Birthday}}|lower</p>
+    <p><strong>Grade: </strong> {{student.Grade}}|lower</p>
+    {%if student.Grade == "12"%}{Senior}
+    {%if student.Grade == "11"%}{Junior}
+    {%if student.Grade == "10"%}{Sophmore}
+    {%if student.Grade == "9"%}{Freshamn}
+    {%endif%}
+
+
+</div>
+{% endblock content %}

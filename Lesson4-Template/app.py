@@ -1,16 +1,17 @@
 from flask import Flask, render_template
-import csv
+import csv, os
 app = Flask(__name__)
 
 #function to read/import csv to list of dicts
 def read_roster():
-    students = []
-    with open('roster.csv', 'r') as file:
+    # Build the absolute path to roster.csv no matter where Flask is run from
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(base_dir, 'roster.csv')
+
+    with open(file_path, 'r') as file:
         reader = csv.DictReader(file)
-        # for row in reader:
-        #     students.append(row)
-        # return students
-        return [row for row in reader]
+        students = [row for row in reader]
+    return students
 
 @app.route('/')
 def home():
@@ -78,6 +79,14 @@ def statistics():
 
     }
     return render_template('stats.html',**data)
+@app.route('/student/<list:student_id>')
+def student_detail(student_id):
+    """Show the Details of the specific students"""
+    students =- read_roster()
+    #find student by ID (ID is indeted in CSV)
+    if 0<student_id <= len(students):
+        student = students[student_id -1]
+        return render_template('student_detial.html',student=student)
 
 if __name__ == '__main__':
     app.run(debug=True)
