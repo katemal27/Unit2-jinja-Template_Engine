@@ -16,6 +16,14 @@
     {%if student.Grade == "9"%}{Freshamn}
     {%endif%}
 
-
+    <strong>Gender:</strong>
+    <span class="{%if student.Gender == 'M'%}male {%else%}{%endif%}">
+    {{student.Gender}}
+    </span>
+    <p><strong>Course:</strong>{{student.Course}}</p>
+    
+    <div class="back-link">
+        <a href="/roster">->> Back to roster</a>
+    </div>
 </div>
 {% endblock content %}

@@ -79,7 +79,7 @@ def statistics():
 
     }
     return render_template('stats.html',**data)
-@app.route('/student/<list:student_id>')
+@app.route('/students/<int:student_id>')
 def student_detail(student_id):
     """Show the Details of the specific students"""
     students =- read_roster()
